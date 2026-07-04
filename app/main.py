@@ -1,6 +1,6 @@
-from fastapi import FastAPI
+from fastapi import FastAPI , HTTPException
 from app.schemas.pnr import PNRRequest
-
+from app.services.pnr_services import PNRService
 app = FastAPI(
     title  = "Railway PNR Status Checker API",
     version = "1.0.0",
@@ -15,8 +15,12 @@ def home():
 
 @app.post("/check-pnr")
 def check_pnr(request : PNRRequest):
-    return{
-        "success": True,
-        "pnr" : request.pnr,
-        "message": "PNR Validated Successfully"
-    }
+
+    result = PNRService.get_pnr_details(request.pnr)
+
+    if result is None:
+        raise HTTPException(
+            status_code = 404,
+            detail = "PNR Not Found"
+        )
+    return result

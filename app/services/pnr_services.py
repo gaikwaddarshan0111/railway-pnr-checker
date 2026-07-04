@@ -7,7 +7,7 @@ class PNRService:
     def get_pnr_details(pnr: str):
 
         data_file = Path(__file__).parent.parent/"data"/"pnr_data.json"
-
+        print(data_file)
         with open(data_file, "r") as file:
             railway_data = json.load(file)
 

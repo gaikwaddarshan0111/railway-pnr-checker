@@ -1,0 +1,36 @@
+[
+  {
+    "pnr": "1234567890",
+    "train_number": "12951",
+    "train_name": "Mumbai Rajdhani Express",
+    "from": "Mumbai Central",
+    "to": "New Delhi",
+    "journey_date": "2026-07-05",
+    "chart_status": "Prepared",
+    "passengers": [
+      {
+        "name": "Darshan Gaikwad",
+        "coach": "B2",
+        "seat": "25",
+        "status": "CNF"
+      }
+    ]
+  },
+  {
+    "pnr": "9876543210",
+    "train_number": "11019",
+    "train_name": "Konark Express",
+    "from": "Mumbai",
+    "to": "Bhubaneswar",
+    "journey_date": "2026-07-08",
+    "chart_status": "Not Prepared",
+    "passengers": [
+      {
+        "name": "Amit Sharma",
+        "coach": "S3",
+        "seat": "48",
+        "status": "RAC"
+      }
+    ]
+  }
+]
