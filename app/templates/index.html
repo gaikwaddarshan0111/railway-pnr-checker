@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title> Railway PNR Status Checker</title>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+
+</head>
+
+<body>
+
+    <main class="'container">
+        <section class="hero">
+            <h1> 🚆 Railway Information Platform </h1>
+            <h2> Track Your Railway Journey With Ease</h2>
+
+            <p>
+                Enter your 10-digit PNR number to view Journey Information.
+            </p>
+        </section>
+
+        <section class="search-card">
+            <input
+                type="text"
+                id="pnr-input"
+                placeholder="Enter 10-digit PNR Number"
+                maxlength="10">
+
+            <button id="check-pnr-btn">Check Status</button>
+        </section>
+
+        <section id="result-container" class="hidden">
+
+        </section>
+    </main>
+
+
+    <script src="/static/js/app.js">   </script>
+
+</body>
+
+</html>
