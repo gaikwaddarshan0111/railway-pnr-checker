@@ -156,3 +156,24 @@ body {
 
     overflow:hidden;
 }
+
+.clear-history {
+
+    padding: 12px;
+
+    text-align : center;
+
+    color : #d32f2f;
+
+    font-weight: bold;
+
+    cursor : pointer;
+
+    border-top: 1px solid #ddd;
+}
+
+.clear-history:hover {
+
+    background: #ffecec;
+
+}
