@@ -111,3 +111,48 @@ body {
 .hidden{
     display:none;
 }
+
+#result-container{
+
+    margin: top 40px;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+
+.history-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.history-btn {
+    background: none;
+    color: #005BAC;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.history-btn:hover {
+    text-decoration:underline;
+}
+
+.history-dropdown {
+    width:320px;
+
+    margin:15px auto 0;
+
+    background:white;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    box-shadow:0 6px 16px rgba(0,0,0,.08);
+
+    overflow:hidden;
+}
