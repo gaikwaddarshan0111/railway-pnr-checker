@@ -138,7 +138,7 @@ searchBtn.addEventListener("click", async function () {
         resultConatiner.innerHTML = "";
 
         showError("Pleae enter a valid 10-digit PNR number.");
-        
+
         return;
     }
    
@@ -152,8 +152,11 @@ searchBtn.addEventListener("click", async function () {
     // ==========================
     // API Call
     // ==========================
+    let response;
+    let data;
+    try{
 
-    const response = await fetch("/check-pnr", {
+       response = await fetch("/check-pnr", {
 
         method: "POST",
 
@@ -167,15 +170,36 @@ searchBtn.addEventListener("click", async function () {
 
     });
 
-    const data = await response.json();
+     data = await response.json();
+}
 
+catch(error){
+     
+     resultContainer.classList.add("hidden");
+
+     resultContainer.innerHTML = "";
+
+     showError("Unable to connect. Please check your internet connection.");
+
+     console.error(error);
+
+     return;
+}
     if(!response.ok){
 
         resultContainer.classList.add("hidden");
 
         resultContainer.innerHTML = "";
 
-        showError("PNR Not Found. Please Verify Your PNR");
+        if(response.status === 404){
+            showError("PNR Not Found. Please verify your PNR.");
+        }
+        elseif(response.status === 500){
+            showError("Internal Server Error. Please try again later.");
+        }
+        else{
+            showError("Unable to process your request.");
+        }
 
         return;
     }
