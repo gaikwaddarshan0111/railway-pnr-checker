@@ -11,6 +11,10 @@ const resultContainer = document.getElementById("result-container");
 const historyToggle = document.getElementById("historyToggle");
 const historyDropdown = document.getElementById("historyDropdown");
 
+const loadingSpinner = document.getElementById("loading-spinner");
+const errorMessage = document.getElementById("error-message");
+console.log(searchBtn);
+
 // ==============================
 // Search History Functions
 // ==============================
@@ -71,14 +75,26 @@ function renderHistory() {
 
     });
 
-        historyDropdown.innerHTML += `
-            <div class="clear-history">
-                🗑 Clear History
-            </div>
-           `;
+    historyDropdown.innerHTML += `
+        <div class="clear-history">
+            🗑 Clear History
+        </div>
+    `;
+}
+
+
+function showError(message){
+
+    errorMessage.innerText = message;
+
+    errorMessage.classList.remove("hidden");
 
 }
 
+function hideError(){
+
+    errorMessage.classList.add("hidden");
+}
 // ==============================
 // Toggle History Dropdown
 // ==============================
@@ -89,15 +105,22 @@ historyToggle.addEventListener("click", function () {
 
     renderHistory();
 
-historyDropdown.addEventListener("click", function(event){
+});
 
-    if(event.target.classList.contains("clear-history")){
+// ==============================
+// Clear History
+// ==============================
+
+historyDropdown.addEventListener("click", function (event) {
+
+    if (event.target.classList.contains("clear-history")) {
 
         localStorage.removeItem("pnrHistory");
 
         renderHistory();
+
     }
-});
+
 });
 
 // ==============================
@@ -109,9 +132,26 @@ searchBtn.addEventListener("click", async function () {
     const pnr = pnrInput.value.trim();
 
     if (pnr === "") {
-        alert("Please Enter A Valid PNR Number");
+
+        resultContainer.classList.add("hidden");
+
+        resultConatiner.innerHTML = "";
+
+        showError("Pleae enter a valid 10-digit PNR number.");
+        
         return;
     }
+   
+    hideError();
+
+    // ==========================
+    // Show Loading Spinner
+    // ==========================
+
+
+    // ==========================
+    // API Call
+    // ==========================
 
     const response = await fetch("/check-pnr", {
 
@@ -129,13 +169,29 @@ searchBtn.addEventListener("click", async function () {
 
     const data = await response.json();
 
+    if(!response.ok){
+
+        resultContainer.classList.add("hidden");
+
+        resultContainer.innerHTML = "";
+
+        showError("PNR Not Found. Please Verify Your PNR");
+
+        return;
+    }
+
+    // ==========================
     // Save History
+    // ==========================
+
     addToHistory(pnr);
 
-    // Refresh Dropdown
     renderHistory();
 
+    // ==========================
     // Show Result
+    // ==========================
+
     resultContainer.classList.remove("hidden");
 
     resultContainer.innerHTML = `
@@ -160,4 +216,5 @@ searchBtn.addEventListener("click", async function () {
 
     `;
 
+   
 });

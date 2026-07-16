@@ -14,7 +14,7 @@
 
 <body>
 
-    <main class="'container">
+    <main class="container">
         <section class="hero">
             <h1> 🚆 Railway Information Platform </h1>
             <h2> Track Your Railway Journey With Ease</h2>
@@ -23,7 +23,7 @@
                 Enter your 10-digit PNR number to view Journey Information.
             </p>
         </section>
-
+    <div id="error-message" class="error-message hidden"></div>
         <section class="search-card">
             <input
                 type="text"
@@ -46,6 +46,12 @@
         <div id="historyDropdown" class="history-dropdown hidden">
             
         </div>
+    
+    <div id="loading-spinner" class="loading hidden">
+        <div class="spinner"></div>
+        <p> Fetching Railway Information...</p>
+    </div>
+    </div>
     <script src="/static/js/app.js">   </script>
 
 </body>
