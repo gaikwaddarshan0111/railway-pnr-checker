@@ -135,9 +135,9 @@ searchBtn.addEventListener("click", async function () {
 
         resultContainer.classList.add("hidden");
 
-        resultConatiner.innerHTML = "";
+        resultContainer.innerHTML = "";
 
-        showError("Pleae enter a valid 10-digit PNR number.");
+        showError("Please enter a valid 10-digit PNR number.");
 
         return;
     }
@@ -194,7 +194,7 @@ catch(error){
         if(response.status === 404){
             showError("PNR Not Found. Please verify your PNR.");
         }
-        elseif(response.status === 500){
+        else if(response.status === 500){
             showError("Internal Server Error. Please try again later.");
         }
         else{

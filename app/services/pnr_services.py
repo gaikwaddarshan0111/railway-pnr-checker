@@ -1,6 +1,11 @@
 import json
 from pathlib import Path
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
+
+API_KEY = os.getenv("RAILKIT_API_KEY")
 
 class PNRService:
     @staticmethod
